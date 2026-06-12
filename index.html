@@ -7,30 +7,28 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SSS CAM Security Solutions</title>
+    <title>SSS CAM Security Solutions</title>
 
-<meta name="description"
-content="SSS CAM Security Solutions - CCTV Installation, Biometric Attendance, Smart Locks, Video Door Phones, Solar Solutions and Access Control Systems.">
+    <meta name="description"
+        content="SSS CAM Security Solutions - CCTV Installation, Biometric Attendance, Smart Locks, Video Door Phones, Solar Solutions and Access Control Systems.">
 
-<meta name="keywords"
-content="CCTV Installation, Smart Locks, Biometric Attendance, Solar Solutions, Security Systems, Rudrapur, Uttarakhand">
+    <meta name="keywords"
+        content="CCTV Installation, Smart Locks, Biometric Attendance, Solar Solutions, Security Systems, Rudrapur, Uttarakhand">
 
-<meta name="author"
-content="SSS CAM Security Solutions">
+    <meta name="author" content="SSS CAM Security Solutions">
 
-<link rel="icon" type="image/png" href="favicon/favicon.png">
+    <link rel="icon" type="image/png" href="favicon/favicon.png">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap"
-rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -97,14 +95,13 @@ rel="stylesheet">
 
             <div class="buttons">
 
-                <button class="btn-primary">
+                <a href="#contact" class="btn-primary">
                     Get Free Quote
-                </button>
+                </a>
 
-                <button class="btn-secondary">
+                <a href="#services" class="btn-secondary">
                     Explore Services
-                </button>
-
+                </a>
             </div>
 
         </div>
@@ -260,15 +257,15 @@ rel="stylesheet">
                 Submit your location and our team will contact you.
             </p>
 
-            <form>
+            <form id="quoteform">
 
-                <input type="text" placeholder="Full Name">
+                <input type="text" name="name" placeholder="Full Name">
 
-                <input type="tel" placeholder="Phone Number">
+                <input type="tel" name="phone" placeholder="Phone Number">
 
-                <input type="email" placeholder="Email Address">
+                <input type="email" name="email" placeholder="Email Address">
 
-                <select>
+                <select name="state">
                     <option>Select State</option>
                     <option>Uttarakhand</option>
                     <option>Uttar Pradesh</option>
@@ -279,11 +276,11 @@ rel="stylesheet">
                     <option>Other</option>
                 </select>
 
-                <input type="text" placeholder="City">
+                <input type="text" name="city" placeholder="City">
 
-                <textarea placeholder="Full Address"></textarea>
+                <textarea name="address" placeholder="Full Address"></textarea>
 
-                <select>
+                <select name="service">
                     <option>Required Service</option>
                     <option>CCTV Installation</option>
                     <option>CCTV Repair</option>
@@ -428,7 +425,7 @@ rel="stylesheet">
             <form class="contact-form" id="contactForm">
 
                 <input type="text" name="name" placeholder="Your Name">
-<input type="email" name="email" placeholder="Email Address">
+                <input type="email" name="email" placeholder="Email Address">
                 <input type="tel" name="phone" placeholder="Phone Number">
 
                 <select name="service">
@@ -513,10 +510,9 @@ rel="stylesheet">
 
     </footer>
     <a href="https://wa.me/919368059534?text=Hi%20SSS%20CAM%20Team,%20I%20am%20interested%20in%20your%20security%20solutions."
-   class="whatsapp-btn"
-   target="_blank">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
+        class="whatsapp-btn" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
     <div id="success-popup">
 
         <div class="popup-content">
@@ -539,7 +535,7 @@ rel="stylesheet">
         <i class="fa-solid fa-phone"></i>
     </a>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
