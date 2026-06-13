@@ -220,4 +220,34 @@ if (contactForm) {
 
     });
 
+}const quoteForm = document.getElementById("quoteForm");
+
+if (quoteForm) {
+
+    quoteForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        emailjs.sendForm(
+            "service_ot5zsap",
+            "template_7mwv9wg",
+            this
+        )
+        .then(() => {
+
+            alert("Quote Request Sent Successfully!");
+
+            quoteForm.reset();
+
+        })
+        .catch((error) => {
+
+            console.log(error);
+
+            alert("❌ Failed to send request.");
+
+        });
+
+    });
+
 }
