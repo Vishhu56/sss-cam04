@@ -250,4 +250,67 @@ if (quoteForm) {
 
     });
 
+
+
+}
+
+/* =========================
+   TESTIMONIAL SEE MORE
+========================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const reviewsBtn = document.getElementById("reviewsBtn");
+    const extraReviews = document.querySelectorAll(".extra-testimonial");
+
+    if (!reviewsBtn) return;
+
+    reviewsBtn.addEventListener("click", function () {
+
+        const isOpen = this.classList.contains("opened");
+
+        if (!isOpen) {
+
+            extraReviews.forEach(function (review) {
+                review.classList.add("show-review");
+            });
+
+            this.innerText = "Show Less Reviews";
+            this.classList.add("opened");
+
+        } else {
+
+            extraReviews.forEach(function (review) {
+                review.classList.remove("show-review");
+            });
+
+            this.innerText = "See More Reviews";
+            this.classList.remove("opened");
+
+        }
+
+    });
+
+});// =========================
+// SEE MORE REVIEWS
+// =========================
+
+const reviewsBtn = document.getElementById("reviewsBtn");
+
+if (reviewsBtn) {
+    reviewsBtn.addEventListener("click", function () {
+
+        const extraReviews = document.querySelectorAll(".extra-testimonial");
+
+        extraReviews.forEach(function (review) {
+            review.classList.toggle("show-review");
+        });
+
+        if (reviewsBtn.textContent.trim() === "See More Reviews") {
+            reviewsBtn.textContent = "Show Less Reviews";
+        } else {
+            reviewsBtn.textContent = "See More Reviews";
+        }
+
+    });
 }
