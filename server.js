@@ -141,6 +141,7 @@ app.post("/api/enquiries", async (req, res) => {
         if (
             process.env.EMAILJS_SERVICE_ID &&
             process.env.EMAILJS_PUBLIC_KEY &&
+            process.env.EMAILJS_PRIVATE_KEY &&
             templateId
         ) {
             try {
@@ -159,6 +160,9 @@ app.post("/api/enquiries", async (req, res) => {
 
                             user_id:
                                 process.env.EMAILJS_PUBLIC_KEY,
+
+                            accessToken:
+                                process.env.EMAILJS_PRIVATE_KEY,
 
                             template_params: {
                                 title:
