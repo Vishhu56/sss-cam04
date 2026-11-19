@@ -287,11 +287,10 @@ form.reset();
     } catch (error) {
         console.error("Enquiry Error:", error);
 
-        showSiteToast(
-            "Something went wrong. Please try again in a moment.",
-            "error"
-        );
-
+       showSiteToast(
+    "Error: " + (error.message || "Unknown error"),
+    "error"
+);
     } finally {
         if (submitButton) {
             submitButton.disabled = false;
