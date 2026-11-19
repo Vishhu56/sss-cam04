@@ -272,40 +272,17 @@ async function sendEnquiryToBackend(
 
         const result = await response.json();
 
-        if (!response.ok || !result.success) {
-            throw new Error(
-                result.message || "Request could not be submitted."
-            );
-        }
+      if (!response.ok || !result.success) {
+    throw new Error(result.message || "Request could not be submitted.");
+}
 
-        // Send notification email
-        try {
-            if (!window.emailjs) {
-                throw new Error("Email service unavailable.");
-            }
+if (result.emailSent === false) {
+    console.warn("Enquiry saved, but email notification was not sent.");
+}
 
-            await emailjs.send(
-                EMAILJS_SERVICE_ID,
-                templateId,
-                emailParams
-            );
+showSiteToast(successMessage, "success");
 
-            showSiteToast(
-                successMessage,
-                "success"
-            );
-
-        } catch (emailError) {
-            console.error("EmailJS Error:", emailError);
-
-            // Enquiry is saved even if email notification fails
-            showSiteToast(
-                "Your request has been received. Our team will contact you shortly.",
-                "success"
-            );
-        }
-
-        form.reset();
+form.reset();
 
     } catch (error) {
         console.error("Enquiry Error:", error);
