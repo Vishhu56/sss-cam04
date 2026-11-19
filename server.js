@@ -2,6 +2,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 const { createClient } = require("@supabase/supabase-js");
 
 const app = express();
@@ -12,26 +13,13 @@ const PORT = process.env.PORT || 5000;
 // =====================================
 
 
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+app.use(cors({
+    origin: "https://shikhar-security-solutions.netlify.app",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET, POST, OPTIONS"
-    );
-
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Content-Type, Authorization"
-    );
-
-    if (req.method === "OPTIONS") {
-        return res.sendStatus(204);
-    }
-
-    next();
-});
-
+app.use(express.json());
 
 // =====================================
 // ENVIRONMENT VARIABLES
