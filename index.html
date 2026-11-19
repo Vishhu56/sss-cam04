@@ -10,12 +10,12 @@
     <title>SHIKHAR Security Solutions</title>
 
     <meta name="description"
-        content="SSS CAM Security Solutions - CCTV Installation, Biometric Attendance, Smart Locks, Video Door Phones, Solar Solutions and Access Control Systems.">
+        content="Shikhar Security Solutions - CCTV Installation, Biometric Attendance, Smart Locks, Video Door Phones, Solar Solutions and Access Control Systems.">
 
     <meta name="keywords"
         content="CCTV Installation, Smart Locks, Biometric Attendance, Solar Solutions, Security Systems, Rudrapur, Uttarakhand">
 
-    <meta name="author" content="SSS CAM Security Solutions">
+    <meta name="author" content="Shikhar Security Solutions">
 
     <link rel="icon" type="image/png" href="favicon/favicon.jfif">
 
@@ -107,50 +107,773 @@
     <!-- =========================
          SERVICES SECTION
     ========================== -->
-    <section id="services" class="services fade-up">
+   <!-- =========================
+     OUR SERVICES
+========================= -->
+
+<section id="services" class="services fade-up">
+
+    <div id="services-home">
+
         <h2>Our Services</h2>
+
+        <p class="services-intro">
+            Complete security and surveillance solutions for homes,
+            offices and businesses.
+        </p>
 
         <div class="services-grid">
 
-            <div class="service-card">
+            <!-- CCTV -->
+            <div class="service-card service-click"
+                 onclick="openService('cctv')">
+
                 <img src="images/cctv.png" alt="CCTV Installation">
-                <h3>CCTV Installation</h3>
-                <p>Professional CCTV installation and maintenance solutions.</p>
+
+                <div class="service-card-content">
+                    <h3>CCTV Installation</h3>
+
+                    <p>
+                        Professional CCTV installation, repair,
+                        surveillance and maintenance solutions.
+                    </p>
+
+                    <span class="service-open">
+                        View Details →
+                    </span>
+                </div>
+
             </div>
 
-            <div class="service-card">
-                <img src="images/door lock.png" alt="door lock">
-                <h3>Smart Locks</h3>
-                <p>Fingerprint, smart and digital locking systems.</p>
+
+            <!-- SMART LOCK -->
+            <div class="service-card service-click"
+                 onclick="openService('smartlock')">
+
+                <img src="images/door lock.png" alt="Smart Locks">
+
+                <div class="service-card-content">
+                    <h3>Smart Locks</h3>
+
+                    <p>
+                        Fingerprint, digital and smart locking
+                        solutions for modern properties.
+                    </p>
+
+                    <span class="service-open">
+                        View Details →
+                    </span>
+                </div>
+
             </div>
 
-            <div class="service-card">
-                <img src="images/lock.png" alt="lock">
-                <h3>Biometric Attendance</h3>
-                <p>Attendance management systems for offices and institutions.</p>
+
+            <!-- BIOMETRIC -->
+            <div class="service-card service-click"
+                 onclick="openService('biometric')">
+
+                <img src="images/lock.png" alt="Biometric Attendance">
+
+                <div class="service-card-content">
+                    <h3>Biometric Attendance</h3>
+
+                    <p>
+                        Reliable attendance and employee
+                        management systems.
+                    </p>
+
+                    <span class="service-open">
+                        View Details →
+                    </span>
+                </div>
+
             </div>
 
-            <div class="service-card">
-                <img src="images/secu.png" alt="access control">
-                <h3>Access Control</h3>
-                <p>Secure access control and entry management systems.</p>
+
+            <!-- ACCESS CONTROL -->
+            <div class="service-card service-click"
+                 onclick="openService('access')">
+
+                <img src="images/secu.png" alt="Access Control">
+
+                <div class="service-card-content">
+                    <h3>Access Control</h3>
+
+                    <p>
+                        Secure entry management and access
+                        control systems.
+                    </p>
+
+                    <span class="service-open">
+                        View Details →
+                    </span>
+                </div>
+
             </div>
 
-            <div class="service-card">
-                <img src="images/solar.png" alt="solar panel">
-                <h3>Solar Solutions</h3>
-                <p>Solar panel installation and energy-saving solutions.</p>
+
+            <!-- SOLAR -->
+            <div class="service-card service-click"
+                 onclick="openService('solar')">
+
+                <img src="images/solar.png" alt="Solar Solutions">
+
+                <div class="service-card-content">
+                    <h3>Solar Solutions</h3>
+
+                    <p>
+                        Solar panel installation and
+                        energy-saving solutions.
+                    </p>
+
+                    <span class="service-open">
+                        View Details →
+                    </span>
+                </div>
+
             </div>
 
-            <div class="service-card">
-                <img src="images/house lock.png" alt="">
-                <h3>Video Door Phone</h3>
-                <p>Video door phones and intercom communication systems.</p>
+
+            <!-- VIDEO DOOR PHONE -->
+            <div class="service-card service-click"
+                 onclick="openService('vdp')">
+
+                <img src="images/house lock.png"
+                     alt="Video Door Phone">
+
+                <div class="service-card-content">
+                    <h3>Video Door Phone</h3>
+
+                    <p>
+                        Video door phones and intercom
+                        communication systems.
+                    </p>
+
+                    <span class="service-open">
+                        View Details →
+                    </span>
+                </div>
+
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+
+    <!-- ==================================
+         SERVICE DETAIL AREA
+    ================================== -->
+
+    <div id="service-details-area" class="service-details-area">
+
+
+        <!-- ================= CCTV ================= -->
+
+        <div class="service-detail" id="service-cctv">
+
+            <button class="back-services"
+                    onclick="closeService()">
+                ← Back to All Services
+            </button>
+
+            <div class="detail-hero">
+
+                <div class="detail-hero-text">
+
+                    <span class="detail-label">
+                        SECURITY SOLUTION
+                    </span>
+
+                    <h2>CCTV Installation & Repair</h2>
+
+                    <p>
+                        Professional CCTV surveillance, installation,
+                        repair and maintenance solutions for homes,
+                        offices and businesses.
+                    </p>
+
+                    <a href="#contact"
+                       class="detail-quote">
+                        Get Free Quote
+                    </a>
+
+                </div>
+
+                <img src="images/cctv.png"
+                     alt="CCTV Installation">
+
+            </div>
+
+
+            <!-- QUICK INFORMATION -->
+
+            <div class="quick-information">
+
+                <h3>Quick Information</h3>
+
+                <div class="establishment-info">
+
+                    <span>Year of Establishment</span>
+
+                    <strong>2011</strong>
+
+                </div>
+
+
+                <div class="information-grid">
+
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            CCTV Repair & Services
+                        </h4>
+
+                        <ul>
+                            <li>Digital Video Recorder Repair</li>
+                            <li>CCTV Camera Repair</li>
+                            <li>CCTV DVR Repair</li>
+                            <li>Cleaning and Checking of Each Camera</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Product Available
+                        </h4>
+
+                        <ul>
+                            <li>Computers & Laptop</li>
+                            <li>Audio & Camera</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Product-Related Benefits
+                        </h4>
+
+                        <ul>
+                            <li>Extended Warranty</li>
+                            <li>Free Installation</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Services
+                        </h4>
+
+                        <ul>
+                            <li>CCTV Surveillance</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Business Details
+                        </h4>
+
+                        <ul>
+                            <li>GSTIN Number</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BRANDS -->
+
+            <div class="brands-section">
+
+                <h3>Brands & Products</h3>
+
+                <p>
+                    Explore the CCTV products and brands available
+                    through our services.
+                </p>
+
+                <div class="brand-grid">
+
+                    <div class="brand-card">
+
+                        <div class="brand-image">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+
+                        <h4>Brand Name</h4>
+
+                        <p>CCTV Camera</p>
+
+                    </div>
+
+
+                    <div class="brand-card">
+
+                        <div class="brand-image">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+
+                        <h4>Brand Name</h4>
+
+                        <p>DVR / NVR</p>
+
+                    </div>
+
+
+                    <div class="brand-card">
+
+                        <div class="brand-image">
+                            <i class="fa-solid fa-camera-retro"></i>
+                        </div>
+
+                        <h4>Brand Name</h4>
+
+                        <p>Security Camera</p>
+
+                    </div>
+
+
+                    <div class="brand-card">
+
+                        <div class="brand-image">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+
+                        <h4>Brand Name</h4>
+
+                        <p>CCTV Accessories</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= SMART LOCK ================= -->
+
+        <div class="service-detail" id="service-smartlock">
+
+            <button class="back-services"
+                    onclick="closeService()">
+                ← Back to All Services
+            </button>
+
+            <div class="detail-hero">
+
+                <div class="detail-hero-text">
+
+                    <span class="detail-label">
+                        SMART SECURITY
+                    </span>
+
+                    <h2>Smart Lock Solutions</h2>
+
+                    <p>
+                        Modern digital, fingerprint and smart locking
+                        solutions for homes, offices and businesses.
+                    </p>
+
+                    <a href="#contact"
+                       class="detail-quote">
+                        Get Free Quote
+                    </a>
+
+                </div>
+
+                <img src="images/door lock.png"
+                     alt="Smart Locks">
+
+            </div>
+
+
+            <div class="quick-information">
+
+                <h3>Quick Information</h3>
+
+                <div class="information-grid">
+
+                    <div class="information-box">
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Smart Lock Solutions
+                        </h4>
+
+                        <ul>
+                            <li>Fingerprint Locks</li>
+                            <li>Digital Door Locks</li>
+                            <li>Smart Door Locks</li>
+                            <li>Electronic Locks</li>
+                        </ul>
+                    </div>
+
+                    <div class="information-box">
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Benefits
+                        </h4>
+
+                        <ul>
+                            <li>Professional Installation</li>
+                            <li>Reliable Support</li>
+                            <li>Modern Security</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= BIOMETRIC ================= -->
+
+        <div class="service-detail" id="service-biometric">
+
+            <button class="back-services"
+                    onclick="closeService()">
+                ← Back to All Services
+            </button>
+
+            <div class="detail-hero">
+
+                <div class="detail-hero-text">
+
+                    <span class="detail-label">
+                        ATTENDANCE SOLUTION
+                    </span>
+
+                    <h2>Biometric Attendance Systems</h2>
+
+                    <p>
+                        Professional biometric attendance systems
+                        for offices, institutions and businesses.
+                    </p>
+
+                    <a href="#contact"
+                       class="detail-quote">
+                        Get Free Quote
+                    </a>
+
+                </div>
+
+                <img src="images/lock.png"
+                     alt="Biometric Attendance">
+
+            </div>
+
+
+            <div class="quick-information">
+
+                <h3>Quick Information</h3>
+
+                <div class="information-grid">
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Biometric Services
+                        </h4>
+
+                        <ul>
+                            <li>Fingerprint Attendance</li>
+                            <li>Employee Attendance</li>
+                            <li>Attendance Management</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Benefits
+                        </h4>
+
+                        <ul>
+                            <li>Easy Management</li>
+                            <li>Reliable Attendance Records</li>
+                            <li>Professional Installation</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= ACCESS CONTROL ================= -->
+
+        <div class="service-detail" id="service-access">
+
+            <button class="back-services"
+                    onclick="closeService()">
+                ← Back to All Services
+            </button>
+
+            <div class="detail-hero">
+
+                <div class="detail-hero-text">
+
+                    <span class="detail-label">
+                        ACCESS SECURITY
+                    </span>
+
+                    <h2>Access Control Systems</h2>
+
+                    <p>
+                        Secure access management and entry control
+                        solutions for residential and commercial properties.
+                    </p>
+
+                    <a href="#contact"
+                       class="detail-quote">
+                        Get Free Quote
+                    </a>
+
+                </div>
+
+                <img src="images/secu.png"
+                     alt="Access Control">
+
+            </div>
+
+
+            <div class="quick-information">
+
+                <h3>Quick Information</h3>
+
+                <div class="information-grid">
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Access Solutions
+                        </h4>
+
+                        <ul>
+                            <li>Access Control Systems</li>
+                            <li>Entry Management</li>
+                            <li>Secure Door Access</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Benefits
+                        </h4>
+
+                        <ul>
+                            <li>Improved Security</li>
+                            <li>Controlled Entry</li>
+                            <li>Professional Installation</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= SOLAR ================= -->
+
+        <div class="service-detail" id="service-solar">
+
+            <button class="back-services"
+                    onclick="closeService()">
+                ← Back to All Services
+            </button>
+
+            <div class="detail-hero">
+
+                <div class="detail-hero-text">
+
+                    <span class="detail-label">
+                        ENERGY SOLUTION
+                    </span>
+
+                    <h2>Solar Solutions</h2>
+
+                    <p>
+                        Solar panel installation and energy-saving
+                        solutions for residential and commercial use.
+                    </p>
+
+                    <a href="#contact"
+                       class="detail-quote">
+                        Get Free Quote
+                    </a>
+
+                </div>
+
+                <img src="images/solar.png"
+                     alt="Solar Solutions">
+
+            </div>
+
+
+            <div class="quick-information">
+
+                <h3>Quick Information</h3>
+
+                <div class="information-grid">
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Solar Services
+                        </h4>
+
+                        <ul>
+                            <li>Solar Panel Installation</li>
+                            <li>Residential Solar Solutions</li>
+                            <li>Commercial Solar Solutions</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Benefits
+                        </h4>
+
+                        <ul>
+                            <li>Energy Saving</li>
+                            <li>Professional Installation</li>
+                            <li>Reliable Support</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= VIDEO DOOR PHONE ================= -->
+
+        <div class="service-detail" id="service-vdp">
+
+            <button class="back-services"
+                    onclick="closeService()">
+                ← Back to All Services
+            </button>
+
+            <div class="detail-hero">
+
+                <div class="detail-hero-text">
+
+                    <span class="detail-label">
+                        COMMUNICATION SECURITY
+                    </span>
+
+                    <h2>Video Door Phone</h2>
+
+                    <p>
+                        Video door phones and intercom communication
+                        systems for safer and smarter entry management.
+                    </p>
+
+                    <a href="#contact"
+                       class="detail-quote">
+                        Get Free Quote
+                    </a>
+
+                </div>
+
+                <img src="images/house lock.png"
+                     alt="Video Door Phone">
+
+            </div>
+
+
+            <div class="quick-information">
+
+                <h3>Quick Information</h3>
+
+                <div class="information-grid">
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Services
+                        </h4>
+
+                        <ul>
+                            <li>Video Door Phone Installation</li>
+                            <li>Intercom Systems</li>
+                            <li>Entry Communication</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="information-box">
+
+                        <h4>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Benefits
+                        </h4>
+
+                        <ul>
+                            <li>Visitor Monitoring</li>
+                            <li>Improved Entry Security</li>
+                            <li>Professional Installation</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+    
 <!-- =========================
      WHY CHOOSE US
 ========================= -->
@@ -251,7 +974,7 @@
                 <h2>About Shikhar Security Solutions</h2>
 
                 <p>
-                    SSS Shikhar Security Solutions is a trusted provider of CCTV
+                    Shikhar Security Solutions is a trusted provider of CCTV
                     Surveillance, Biometric Attendance Systems, Smart Locks,
                     Access Control, Video Door Phones and Solar Solutions.
                 </p>
@@ -273,7 +996,7 @@
             </div>
 
             <div class="about-image">
-                <img src="images/imagesvilla.png" alt="SSS CAM Security Solutions">
+                <img src="images/imagesvilla.png" alt="Shikhar Security Solutions">
             </div>
 
         </div>
@@ -323,14 +1046,14 @@
 
             <form id="quoteForm">
 
-                <input type="text" name="name" placeholder="Full Name">
+                <input type="text" name="name" placeholder="Full Name" autocomplete="name" required>
 
-                <input type="tel" name="phone" placeholder="Phone Number">
+                <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" required>
 
-                <input type="email" name="email" placeholder="Email Address">
+                <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
 
-                <select name="state">
-                    <option>Select State</option>
+                <select name="state" required>
+                    <option value="" selected disabled>Select State</option>
                     <option>Uttarakhand</option>
                     <option>Uttar Pradesh</option>
                     <option>Delhi</option>
@@ -344,8 +1067,8 @@
 
                 <textarea name="address" placeholder="Full Address"></textarea>
 
-                <select name="service">
-                    <option>Required Service</option>
+                <select name="service" required>
+                    <option value="" selected disabled>Required Service</option>
                     <option>CCTV Installation</option>
                     <option>CCTV Repair</option>
                     <option>Biometric Attendance</option>
@@ -498,7 +1221,29 @@
         </div>
 
     </div>
+<div class="review-form">
 
+    <h3>Share Your Experience</h3>
+
+    <div class="star-rating">
+        <span data-rating="1">★</span>
+        <span data-rating="2">★</span>
+        <span data-rating="3">★</span>
+        <span data-rating="4">★</span>
+        <span data-rating="5">★</span>
+    </div>
+
+    <input type="text" id="reviewName" placeholder="Your Name">
+
+    <input type="text" id="reviewCity" placeholder="Your City">
+
+    <textarea id="reviewText" placeholder="Write your review..."></textarea>
+
+    <button type="button" id="submitReview">
+        Submit Review
+    </button>
+
+</div>
     <button id="reviewsBtn" class="reviews-btn">
         See More Reviews
     </button>
@@ -536,30 +1281,30 @@
 
                 <h3 style="text-align: center;"> Shikhar Security Solutions</h3>
 
-                <p>📞 +91 81262 77722</p>
-                <p>📞 +91 82658 26689</p>
+                <p>📞 <a class="contact-link" href="tel:+918126277722">+91 81262 77722</a></p>
+                <p>📞 <a class="contact-link" href="tel:+918265826689">+91 82658 26689</a></p>
 
-                 <p>📧 jayprakash386@gmail.com</p>
+                 <p>📧 <a class="contact-link" href="mailto:jayprakash386@gmail.com">jayprakash386@gmail.com</a></p>
 
-                <p>📍 Rudrapur, Uttarakhand</p>
+                <p>📍 <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Rudrapur%2C%20Uttarakhand" target="_blank" rel="noopener noreferrer">Rudrapur, Uttarakhand</a></p>
 
             </div>
 
             <form class="contact-form" id="contactForm">
 
-                <input type="text" name="name" placeholder="Your Name">
-                <input type="email" name="email" placeholder="Email Address">
-                <input type="tel" name="phone" placeholder="Phone Number">
+                <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
+                <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+                <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" required>
 
-                <select name="service">
-                    <option>Select Service</option>
+                <select name="service" required>
+                    <option value="" selected disabled>Select Service</option>
                     <option>CCTV Installation</option>
                     <option>Biometric System</option>
                     <option>Smart Lock</option>
                     <option>Solar Solutions</option>
                 </select>
 
-                <textarea name="message" placeholder="Your Message"></textarea>
+                <textarea name="message" placeholder="Your Message" required></textarea>
 
                 <button type="submit">
                     Send Inquiry
@@ -604,10 +1349,10 @@
 
                 <h3>Services</h3>
 
-                <p>CCTV Installation</p>
-                <p>Biometric Systems</p>
-                <p>Smart Locks</p>
-                <p>Solar Solutions</p>
+                <p><a href="#services" onclick="openService('cctv'); return false;">CCTV Installation</a></p>
+                <p><a href="#services" onclick="openService('biometric'); return false;">Biometric Systems</a></p>
+                <p><a href="#services" onclick="openService('smartlock'); return false;">Smart Locks</a></p>
+                <p><a href="#services" onclick="openService('solar'); return false;">Solar Solutions</a></p>
 
             </div>
 
@@ -615,11 +1360,11 @@
 
                 <h3>Contact</h3>
 
-                <p>📞 +91 82658 26689</p>
+                <p>📞 <a class="contact-link" href="tel:+918265826689">+91 82658 26689</a></p>
 
-                <p>📧 jayprakash386@gmail.com</p>
+                <p>📧 <a class="contact-link" href="mailto:jayprakash386@gmail.com">jayprakash386@gmail.com</a></p>
 
-                <p>📍 Rudrapur, Uttarakhand</p>
+                <p>📍 <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Rudrapur%2C%20Uttarakhand" target="_blank" rel="noopener noreferrer">Rudrapur, Uttarakhand</a></p>
 
             </div>
 
@@ -632,7 +1377,7 @@
         </div>
 
     </footer>
-    <a href="https://wa.me/918265826689?text=Hi%20SSS%20CAM%20Team,%20I%20am%20interested%20in%20your%20security%20solutions."
+    <a href="https://wa.me/918265826689?text=Hi%20Shikhar%20Security%20Solutions%20Team,%20I%20am%20interested%20in%20your%20security%20solutions."
         class="whatsapp-btn" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
