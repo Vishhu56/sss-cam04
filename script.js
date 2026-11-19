@@ -126,7 +126,7 @@ window.addEventListener("scroll", () => {
    EMAILJS + SUPABASE CONFIGURATION
 ========================================= */
 
-const API_BASE_URL = "https://shikhar-security-solution.onrender.com";
+const API_BASE_URL = "https://shikhar-secuirty-solution.onrender.com";
 
 const EMAILJS_PUBLIC_KEY = "_S-Nud8e_2LGWonDm";
 const EMAILJS_SERVICE_ID = "service_ot5zsap";
