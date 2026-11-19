@@ -11,15 +11,9 @@ const PORT = process.env.PORT || 5000;
 // CORS CONFIGURATION
 // =====================================
 
-const allowedOrigin =
-    "https://shikhar-security-solutions.netlify.app";
 
 app.use((req, res, next) => {
-    const origin = req.headers.origin;
-
-    if (origin === allowedOrigin) {
-        res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
-    }
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
     res.setHeader(
         "Access-Control-Allow-Methods",
@@ -31,34 +25,13 @@ app.use((req, res, next) => {
         "Content-Type, Authorization"
     );
 
-    res.setHeader("Access-Control-Max-Age", "86400");
-    res.setHeader("Vary", "Origin");
-
-    // Handle browser preflight requests
     if (req.method === "OPTIONS") {
-        if (origin !== allowedOrigin) {
-            return res.status(403).end();
-        }
-
-        return res.status(204).end();
+        return res.sendStatus(204);
     }
 
     next();
 });
 
-// =====================================
-// MIDDLEWARE
-// =====================================
-
-app.use(express.json());
-
-// Request logging
-app.use((req, res, next) => {
-    console.log(
-        `${new Date().toISOString()} - ${req.method} ${req.path}`
-    );
-    next();
-});
 
 // =====================================
 // ENVIRONMENT VARIABLES
