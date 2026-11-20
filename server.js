@@ -180,7 +180,7 @@ app.post("/api/enquiries", async (req, res) => {
                                 address: address || "",
 
                                 time: new Date().toLocaleString("en-IN", {
-                                    timezone: "Asia/kolkata"
+                                    timeZone: "Asia/Kolkata"
                                 })
                             }
                         })
