@@ -79,6 +79,53 @@ app.get("/api/health", (req, res) => {
 });
 
 // =====================================
+// CUSTOMER REVIEWS
+// =====================================
+
+app.get("/api/reviews", async (req, res) => {
+    try {
+        const { data, error } = await supabase.from("reviews")
+            .select("id, name, city, rating, review, created_at")
+            .order("created_at", { ascending: false })
+            .limit(100);
+        if (error) {
+            console.error("REVIEWS LOAD ERROR:", error);
+            return res.status(500).json({ success: false, message: "Could not load customer reviews." });
+        }
+        return res.json({ success: true, reviews: data || [] });
+    } catch (error) {
+        console.error("REVIEWS LOAD ERROR:", error);
+        return res.status(500).json({ success: false, message: "Could not load customer reviews." });
+    }
+});
+
+app.post("/api/reviews", async (req, res) => {
+    try {
+        const { name, city, rating, review } = req.body || {};
+        const cleanName = typeof name === "string" ? name.trim() : "";
+        const cleanCity = typeof city === "string" ? city.trim() : "";
+        const cleanReview = typeof review === "string" ? review.trim() : "";
+        const cleanRating = Number(rating);
+        if (!cleanName || cleanName.length > 80 || !cleanCity || cleanCity.length > 80 ||
+            !cleanReview || cleanReview.length > 2000 || !Number.isInteger(cleanRating) ||
+            cleanRating < 1 || cleanRating > 5) {
+            return res.status(400).json({ success: false, message: "Enter a name, city, review and a 1–5 star rating." });
+        }
+        const { data, error } = await supabase.from("reviews").insert([{
+            name: cleanName, city: cleanCity, rating: cleanRating, review: cleanReview
+        }]).select("id, name, city, rating, review, created_at").single();
+        if (error) {
+            console.error("REVIEW SAVE ERROR:", error);
+            return res.status(500).json({ success: false, message: "Could not save your review. Please try again." });
+        }
+        return res.status(201).json({ success: true, review: data });
+    } catch (error) {
+        console.error("REVIEW SAVE ERROR:", error);
+        return res.status(500).json({ success: false, message: "Could not save your review. Please try again." });
+    }
+});
+
+// =====================================
 // SAVE ENQUIRY + SEND EMAIL
 // =====================================
 

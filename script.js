@@ -451,89 +451,98 @@ if (reviewsBtn) {
 ========================= */
 
 let selectedRating = 0;
-
 const stars = document.querySelectorAll(".star-rating span");
+const testimonialGrid = document.querySelector(".testimonial-grid");
+const renderedReviewIds = new Set();
 
 stars.forEach(star => {
-
     star.addEventListener("click", function() {
-
         selectedRating = Number(this.dataset.rating);
-
-        stars.forEach(s => {
-            s.classList.remove("selected");
-        });
-
-        for (let i = 0; i < selectedRating; i++) {
-            stars[i].classList.add("selected");
-        }
-
+        stars.forEach(item => item.classList.remove("selected"));
+        for (let i = 0; i < selectedRating; i++) stars[i].classList.add("selected");
     });
-
 });
 
+function appendSavedReview(review) {
+    if (!testimonialGrid || !review) return;
+    const id = review.id == null ? "" : String(review.id);
+    if (id && renderedReviewIds.has(id)) return;
+    if (id) renderedReviewIds.add(id);
+
+    const card = document.createElement("div");
+    card.className = "testimonial-card";
+    if (id) card.dataset.reviewId = id;
+    const ratingElement = document.createElement("div");
+    ratingElement.className = "user-rating";
+    const rating = Number(review.rating);
+    ratingElement.textContent = Number.isInteger(rating) && rating >= 1 && rating <= 5 ? "★".repeat(rating) : "";
+    const reviewElement = document.createElement("p");
+    reviewElement.textContent = String.fromCharCode(34) + String(review.review || "") + String.fromCharCode(34);
+    const nameElement = document.createElement("h4");
+    nameElement.textContent = String(review.name || "");
+    const cityElement = document.createElement("span");
+    cityElement.textContent = String(review.city || "");
+    card.append(ratingElement, reviewElement, nameElement, cityElement);
+    testimonialGrid.appendChild(card);
+}
+
+async function loadSavedReviews() {
+    if (!testimonialGrid) return;
+    try {
+        const response = await fetch(API_BASE_URL + "/api/reviews");
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        const result = await response.json();
+        if (Array.isArray(result.reviews)) result.reviews.forEach(appendSavedReview);
+    } catch (error) {
+        console.warn("Could not load saved reviews:", error);
+    }
+}
+loadSavedReviews();
+
 const submitReview = document.getElementById("submitReview");
-
 if (submitReview) {
-
-    submitReview.addEventListener("click", function() {
-
+    submitReview.addEventListener("click", async function() {
         const name = document.getElementById("reviewName").value.trim();
         const city = document.getElementById("reviewCity").value.trim();
         const review = document.getElementById("reviewText").value.trim();
-
         if (!name || !city || !review || selectedRating === 0) {
-            alert("Please complete your rating, name, city and review.");
+            showSiteToast("Please complete your rating, name, city and review.", "error");
             return;
         }
-
-        const reviewCard = document.createElement("div");
-
-        reviewCard.className = "testimonial-card";
-
-        const ratingElement = document.createElement("div");
-        ratingElement.className = "user-rating";
-        ratingElement.textContent = "★".repeat(selectedRating);
-
-        const reviewElement = document.createElement("p");
-        reviewElement.textContent = `"${review}"`;
-
-        const nameElement = document.createElement("h4");
-        nameElement.textContent = name;
-
-        const cityElement = document.createElement("span");
-        cityElement.textContent = city;
-
-        reviewCard.append(
-            ratingElement,
-            reviewElement,
-            nameElement,
-            cityElement
-        );
-
-        const testimonialGrid =
-            document.querySelector(".testimonial-grid");
-
-        if (!testimonialGrid) return;
-
-        testimonialGrid.appendChild(reviewCard);
-
-        document.getElementById("reviewName").value = "";
-        document.getElementById("reviewCity").value = "";
-        document.getElementById("reviewText").value = "";
-
-        stars.forEach(s => {
-            s.classList.remove("selected");
-        });
-
-        selectedRating = 0;
-
-        showSiteToast("Thank you for sharing your feedback!", "success");
-
+        if (name.length > 80 || city.length > 80 || review.length > 2000) {
+            showSiteToast("Name and city must be under 80 characters; review under 2000.", "error");
+            return;
+        }
+        const button = this;
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = "Saving...";
+        try {
+            const response = await fetch(API_BASE_URL + "/api/reviews", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, city, rating: selectedRating, review })
+            });
+            const result = await response.json();
+            if (!response.ok || !result.success || !result.review) {
+                throw new Error(result.message || "Could not save your review.");
+            }
+            appendSavedReview(result.review);
+            document.getElementById("reviewName").value = "";
+            document.getElementById("reviewCity").value = "";
+            document.getElementById("reviewText").value = "";
+            stars.forEach(star => star.classList.remove("selected"));
+            selectedRating = 0;
+            showSiteToast("Thank you! Your review has been saved.", "success");
+        } catch (error) {
+            console.error("REVIEW SUBMISSION ERROR:", error);
+            showSiteToast(error.message || "Could not save your review. Please try again.", "error");
+        } finally {
+            button.disabled = false;
+            button.textContent = originalText;
+        }
     });
-
 }
-
 
 /* =========================================
    SERVICE DETAILS SYSTEM
