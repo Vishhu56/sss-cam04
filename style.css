@@ -2813,3 +2813,42 @@ section {
         height: 132px;
     }
 }
+
+/* RESPONSIVE LOCATION TILES */
+.locations {
+    display: grid;
+    width: min(920px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px;
+    margin: 32px auto 48px;
+}
+
+.location-card {
+    display: flex;
+    width: 100%;
+    min-height: 74px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 16px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(16, 26, 44, .07);
+    font-size: 14px;
+    line-height: 1.35;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .locations {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .location-card {
+        min-height: 66px;
+        padding: 14px 7px;
+        font-size: clamp(11px, 3vw, 13px);
+    }
+}
