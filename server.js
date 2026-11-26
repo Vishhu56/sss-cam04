@@ -13,21 +13,22 @@ const PORT = process.env.PORT || 5000;
 // =====================================
 
 // CORS CONFIGURATION
+const allowedOrigins = [
+    "https://shikhar-security-solutions.netlify.app",
+    "https://shikharsecuritysolutions.com",
+    "https://www.shikharsecuritysolutions.com"
+];
+
 app.use((req, res, next) => {
-    res.header(
-        "Access-Control-Allow-Origin",
-        "https://shikhar-security-solutions.netlify.app"
-    );
+    const origin = req.headers.origin;
 
-    res.header(
-        "Access-Control-Allow-Methods",
-        "GET, POST, OPTIONS"
-    );
+    if (origin && allowedOrigins.includes(origin)) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+    }
 
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Content-Type, Authorization"
-    );
+    res.setHeader("Vary", "Origin");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
     if (req.method === "OPTIONS") {
         return res.sendStatus(204);
