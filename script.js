@@ -616,3 +616,155 @@ function closeService() {
         });
     }
 }
+
+
+/* Owner-editable content loaded from content/site.json */
+(async function applyOwnerManagedContent() {
+    const setText = (element, value) => {
+        if (element && typeof value === "string") element.textContent = value;
+    };
+
+    const setImage = (image, source, alt) => {
+        if (!image) return;
+        if (typeof source === "string" && source.trim()) image.src = source.trim();
+        if (typeof alt === "string") image.alt = alt;
+        image.loading = "lazy";
+        image.decoding = "async";
+    };
+
+    try {
+        const response = await fetch("/content/site.json", { cache: "no-store" });
+        if (!response.ok) throw new Error("Content file returned HTTP " + response.status);
+        const content = await response.json();
+
+        if (typeof content.seoTitle === "string" && content.seoTitle.trim()) {
+            document.title = content.seoTitle.trim();
+        }
+        const descriptionMeta = document.querySelector('meta[name="description"]');
+        if (descriptionMeta && typeof content.seoDescription === "string") {
+            descriptionMeta.setAttribute("content", content.seoDescription);
+        }
+
+        if (content.hero) {
+            const title = document.querySelector(".hero-content h1");
+            setText(title, content.hero.title);
+            if (title) title.style.whiteSpace = "pre-line";
+            setText(document.querySelector(".hero-content h2"), content.hero.subtitle);
+            setText(document.querySelector(".hero-content > p"), content.hero.description);
+        }
+
+        if (Array.isArray(content.services)) {
+            const cards = document.querySelectorAll("#services-home .service-card");
+            content.services.forEach((service, index) => {
+                const card = cards[index];
+                if (!card || !service) return;
+
+                setText(card.querySelector(".service-card-content h3"), service.title);
+                setText(card.querySelector(".service-card-content p"), service.description);
+                setImage(card.querySelector("img"), service.image, service.alt || service.title);
+
+                if (service.key && typeof window.openService === "function") {
+                    card.onclick = () => window.openService(service.key);
+                }
+
+                const detail = document.getElementById("service-" + service.key);
+                if (detail) {
+                    setText(detail.querySelector(".detail-hero-text h2"), service.detailTitle);
+                    setText(detail.querySelector(".detail-hero-text p"), service.detailDescription);
+                    setImage(detail.querySelector(".detail-hero img"), service.image, service.alt || service.title);
+                }
+            });
+
+            document.querySelectorAll('select[name="service"]').forEach(select => {
+                const oldPlaceholder = select.querySelector('option[disabled]');
+                const placeholder = new Option(
+                    oldPlaceholder ? oldPlaceholder.textContent : "Select Service",
+                    "",
+                    true,
+                    true
+                );
+                placeholder.disabled = true;
+                select.replaceChildren(placeholder);
+                content.services.forEach(service => {
+                    if (service && service.title) select.add(new Option(service.title, service.title));
+                });
+            });
+        }
+
+        if (Array.isArray(content.projects)) {
+            const grid = document.querySelector(".projects-grid");
+            if (grid) {
+                const cards = content.projects.map(project => {
+                    const card = document.createElement("div");
+                    card.className = "project-card";
+
+                    const image = document.createElement("img");
+                    setImage(image, project.image, project.alt || project.title || "Project photo");
+
+                    const body = document.createElement("div");
+                    body.className = "project-content";
+
+                    const heading = document.createElement("h3");
+                    setText(heading, project.title);
+
+                    const city = document.createElement("span");
+                    setText(city, project.city ? "📍 " + project.city : "");
+
+                    const description = document.createElement("p");
+                    setText(description, project.description);
+
+                    body.append(heading, city, description);
+                    card.append(image, body);
+                    return card;
+                });
+                grid.replaceChildren(...cards);
+            }
+        }
+
+        if (content.contact) {
+            const contact = content.contact;
+            const phoneLinks = document.querySelectorAll(".contact-info a.contact-link[href^='tel:'], .footer a.contact-link[href^='tel:']");
+            phoneLinks.forEach((link, index) => {
+                const number = index === 0 ? contact.primaryPhone : contact.secondaryPhone;
+                if (typeof number !== "string" || !number.trim()) return;
+                link.href = "tel:" + number.replace(/[^+\d]/g, "");
+                setText(link, number);
+            });
+
+            const secondaryPhone = typeof contact.secondaryPhone === "string"
+                ? contact.secondaryPhone.replace(/[^+\d]/g, "")
+                : "";
+            const callButton = document.querySelector(".call-btn");
+            if (callButton && secondaryPhone) callButton.href = "tel:" + secondaryPhone;
+
+            document.querySelectorAll('a.contact-link[href^="mailto:"]').forEach(link => {
+                if (typeof contact.email !== "string" || !contact.email.trim()) return;
+                link.href = "mailto:" + contact.email.trim();
+                setText(link, contact.email.trim());
+            });
+
+            document.querySelectorAll('a.contact-link[href*="google.com/maps/search"]').forEach(link => {
+                if (typeof contact.location !== "string" || !contact.location.trim()) return;
+                link.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(contact.location.trim());
+                setText(link, contact.location.trim());
+            });
+
+            const mapFrame = document.querySelector(".map-container iframe");
+            if (mapFrame && typeof contact.mapSearch === "string" && contact.mapSearch.trim()) {
+                mapFrame.src = "https://www.google.com/maps?q=" + encodeURIComponent(contact.mapSearch.trim()) + "&output=embed";
+            }
+
+            const whatsappLink = document.querySelector(".whatsapp-btn");
+            const whatsappNumber = typeof contact.whatsappPhone === "string"
+                ? contact.whatsappPhone.replace(/\D/g, "")
+                : "";
+            if (whatsappLink && whatsappNumber) {
+                whatsappLink.href = "https://wa.me/" + whatsappNumber + "?text=" +
+                    encodeURIComponent("Hi Shikhar Security Solutions, I am interested in your security solutions.");
+            }
+        }
+    } catch (error) {
+        console.warn("Website content could not be loaded; keeping the built-in page content.", error);
+    }
+})();
+
