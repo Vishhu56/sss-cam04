@@ -1,0 +1,103 @@
+{
+  "seoTitle": "SHIKHAR Security Solutions",
+  "seoDescription": "Shikhar Security Solutions - CCTV Installation, Biometric Attendance, Smart Locks, Video Door Phones, Solar Solutions and Access Control Systems.",
+  "hero": {
+    "title": "Protect What\nMatters Most",
+    "subtitle": "Advanced CCTV, Home Automation, Smart Locks, Biometric Systems & Solar Solutions",
+    "description": "A complete solution."
+  },
+  "services": [
+    {
+      "key": "cctv",
+      "title": "CCTV Installation",
+      "description": "Professional CCTV installation, repair, surveillance and maintenance solutions.",
+      "detailTitle": "CCTV Installation & Repair",
+      "detailDescription": "Professional CCTV surveillance, installation, repair and maintenance solutions for homes, offices and businesses.",
+      "image": "/images/cctv.png",
+      "alt": "CCTV Installation"
+    },
+    {
+      "key": "smartlock",
+      "title": "Smart Locks",
+      "description": "Fingerprint, digital and smart locking solutions for modern properties.",
+      "detailTitle": "Smart Lock Solutions",
+      "detailDescription": "Modern digital, fingerprint and smart locking solutions for homes, offices and businesses.",
+      "image": "/images/door lock.png",
+      "alt": "Smart Locks"
+    },
+    {
+      "key": "biometric",
+      "title": "Biometric Attendance",
+      "description": "Reliable attendance and employee management systems.",
+      "detailTitle": "Biometric Attendance Systems",
+      "detailDescription": "Professional biometric attendance systems for offices, institutions and businesses.",
+      "image": "/images/lock.png",
+      "alt": "Biometric Attendance"
+    },
+    {
+      "key": "access",
+      "title": "Access Control",
+      "description": "Secure entry management and access control systems.",
+      "detailTitle": "Access Control Systems",
+      "detailDescription": "Secure access management and entry control solutions for residential and commercial properties.",
+      "image": "/images/secu.png",
+      "alt": "Access Control"
+    },
+    {
+      "key": "solar",
+      "title": "Solar Solutions",
+      "description": "Solar panel installation and energy-saving solutions.",
+      "detailTitle": "Solar Solutions",
+      "detailDescription": "Solar panel installation and energy-saving solutions for residential and commercial use.",
+      "image": "/images/solar.png",
+      "alt": "Solar Solutions"
+    },
+    {
+      "key": "vdp",
+      "title": "Video Door Phone",
+      "description": "Video door phones and intercom communication systems.",
+      "detailTitle": "Video Door Phone",
+      "detailDescription": "Video door phones and intercom communication systems for safer and smarter entry management.",
+      "image": "/images/house lock.png",
+      "alt": "Video Door Phone"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Residential CCTV Setup",
+      "city": "Rudrapur",
+      "description": "Complete CCTV surveillance installation for a luxury villa.",
+      "image": "/images/cctv survillance.png",
+      "alt": "CCTV camera installation at a residence in Rudrapur"
+    },
+    {
+      "title": "Office Biometric System",
+      "city": "Haldwani",
+      "description": "Employee attendance and access management solution.",
+      "image": "/images/bio metric.png",
+      "alt": "Biometric attendance system installed at an office in Haldwani"
+    },
+    {
+      "title": "Smart Lock Installation",
+      "city": "Kichha",
+      "description": "Premium smart lock installation for modern homes.",
+      "image": "/images/digital lock.png",
+      "alt": "Smart digital lock installation in Kichha"
+    },
+    {
+      "title": "Solar Panel Project",
+      "city": "Kashipur",
+      "description": "Energy-efficient solar installation for residential use.",
+      "image": "/images/panel.jpg",
+      "alt": "Solar panel installation for a home in Kashipur"
+    }
+  ],
+  "contact": {
+    "primaryPhone": "+91 81262 77722",
+    "secondaryPhone": "+91 82658 26689",
+    "whatsappPhone": "918265826689",
+    "email": "jayprakash386@gmail.com",
+    "location": "Rudrapur, Uttarakhand",
+    "mapSearch": "Shikhar Security Solutions, Rudrapur, Uttarakhand"
+  }
+}

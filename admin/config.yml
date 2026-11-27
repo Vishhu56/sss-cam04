@@ -1,0 +1,116 @@
+backend:
+  name: git-gateway
+  branch: main
+
+site_url: https://shikharsecuritysolutions.com
+display_url: https://shikharsecuritysolutions.com
+logo_url: /favicon/favicon.png
+
+media_folder: images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: website
+    label: Website content
+    files:
+      - name: homepage
+        label: Homepage, services and contact
+        file: content/site.json
+        format: json
+        fields:
+          - label: Search result title
+            name: seoTitle
+            widget: string
+          - label: Search result description
+            name: seoDescription
+            widget: text
+          - label: Homepage hero
+            name: hero
+            widget: object
+            fields:
+              - label: Main heading
+                name: title
+                widget: text
+              - label: Service summary
+                name: subtitle
+                widget: text
+              - label: Short introduction
+                name: description
+                widget: text
+          - label: Homepage service cards and detail headings
+            name: services
+            widget: list
+            min: 6
+            max: 6
+            allow_add: false
+            allow_remove: false
+            allow_reorder: false
+            summary: "{{fields.title}}"
+            fields:
+              - label: Service key (keep unchanged)
+                name: key
+                widget: hidden
+              - label: Card title
+                name: title
+                widget: string
+              - label: Card description
+                name: description
+                widget: text
+              - label: Detail page heading
+                name: detailTitle
+                widget: string
+              - label: Detail page introduction
+                name: detailDescription
+                widget: text
+              - label: Service image
+                name: image
+                widget: image
+                choose_url: false
+              - label: Image description for accessibility
+                name: alt
+                widget: string
+          - label: Recent projects
+            name: projects
+            widget: list
+            min: 1
+            max: 12
+            summary: "{{fields.title}} — {{fields.city}}"
+            fields:
+              - label: Project title
+                name: title
+                widget: string
+              - label: City
+                name: city
+                widget: string
+              - label: Short description
+                name: description
+                widget: text
+              - label: Project photo
+                name: image
+                widget: image
+                choose_url: false
+              - label: Image description for accessibility
+                name: alt
+                widget: string
+          - label: Contact information
+            name: contact
+            widget: object
+            fields:
+              - label: Primary phone
+                name: primaryPhone
+                widget: string
+              - label: Secondary phone
+                name: secondaryPhone
+                widget: string
+              - label: WhatsApp phone (country code, no plus sign)
+                name: whatsappPhone
+                widget: string
+              - label: Email address
+                name: email
+                widget: string
+              - label: Displayed location
+                name: location
+                widget: string
+              - label: Google Maps search text
+                name: mapSearch
+                widget: string
