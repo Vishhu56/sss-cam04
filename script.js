@@ -691,34 +691,44 @@ function closeService() {
             });
         }
 
-        if (Array.isArray(content.projects)) {
-            const grid = document.querySelector(".projects-grid");
-            if (grid) {
-                const cards = content.projects.map(project => {
-                    const card = document.createElement("div");
-                    card.className = "project-card";
+        try {
+            const galleryResponse = await fetch("/content/gallery.json", { cache: "no-store" });
+            if (!galleryResponse.ok) throw new Error("Gallery file returned HTTP " + galleryResponse.status);
+            const gallery = await galleryResponse.json();
+            setText(document.querySelector(".projects .section-title"), gallery.title);
+            setText(document.querySelector(".projects .section-subtitle"), gallery.description);
 
-                    const image = document.createElement("img");
-                    setImage(image, project.image, project.alt || project.title || "Project photo");
+            if (Array.isArray(gallery.items)) {
+                const grid = document.querySelector(".projects-grid");
+                if (grid) {
+                    const cards = gallery.items.map(project => {
+                        const card = document.createElement("div");
+                        card.className = "project-card";
 
-                    const body = document.createElement("div");
-                    body.className = "project-content";
+                        const image = document.createElement("img");
+                        setImage(image, project.image, project.alt || project.title || "Project photo");
 
-                    const heading = document.createElement("h3");
-                    setText(heading, project.title);
+                        const body = document.createElement("div");
+                        body.className = "project-content";
 
-                    const city = document.createElement("span");
-                    setText(city, project.city ? "📍 " + project.city : "");
+                        const heading = document.createElement("h3");
+                        setText(heading, project.title);
 
-                    const description = document.createElement("p");
-                    setText(description, project.description);
+                        const city = document.createElement("span");
+                        setText(city, project.city ? "📍 " + project.city : "");
 
-                    body.append(heading, city, description);
-                    card.append(image, body);
-                    return card;
-                });
-                grid.replaceChildren(...cards);
+                        const description = document.createElement("p");
+                        setText(description, project.description);
+
+                        body.append(heading, city, description);
+                        card.append(image, body);
+                        return card;
+                    });
+                    grid.replaceChildren(...cards);
+                }
             }
+        } catch (galleryError) {
+            console.warn("Work gallery could not be loaded; keeping the built-in project cards.", galleryError);
         }
 
         if (content.contact) {

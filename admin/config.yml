@@ -69,29 +69,6 @@ collections:
               - label: Image description for accessibility
                 name: alt
                 widget: string
-          - label: Recent projects
-            name: projects
-            widget: list
-            min: 1
-            max: 12
-            summary: "{{fields.title}} — {{fields.city}}"
-            fields:
-              - label: Project title
-                name: title
-                widget: string
-              - label: City
-                name: city
-                widget: string
-              - label: Short description
-                name: description
-                widget: text
-              - label: Project photo
-                name: image
-                widget: image
-                choose_url: false
-              - label: Image description for accessibility
-                name: alt
-                widget: string
           - label: Contact information
             name: contact
             widget: object
@@ -113,4 +90,41 @@ collections:
                 widget: string
               - label: Google Maps search text
                 name: mapSearch
+                widget: string
+  - name: work_gallery
+    label: Our Work Gallery
+    files:
+      - name: gallery
+        label: Work photos
+        file: content/gallery.json
+        format: json
+        fields:
+          - label: Gallery heading
+            name: title
+            widget: string
+          - label: Short introduction
+            name: description
+            widget: text
+          - label: Work photos
+            name: items
+            widget: list
+            min: 1
+            max: 24
+            summary: "{{fields.title}} — {{fields.city}}"
+            fields:
+              - label: Project title
+                name: title
+                widget: string
+              - label: City
+                name: city
+                widget: string
+              - label: Short description
+                name: description
+                widget: text
+              - label: Work photo
+                name: image
+                widget: image
+                choose_url: false
+              - label: Image description for accessibility
+                name: alt
                 widget: string
